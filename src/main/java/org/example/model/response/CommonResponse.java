@@ -1,9 +1,13 @@
 package org.example.model.response;
 
-public class CommonRes<T> {
+/**
+ * common response
+ * @param <T>
+ */
+public class CommonResponse<T> {
 
     private boolean success;
-    private int errorCode;
+    private String errorCode;
     private String errorMsg;
     private T data;
 
@@ -15,11 +19,11 @@ public class CommonRes<T> {
         this.data = data;
     }
 
-    public int getErrorCode() {
+    public String getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(int errorCode) {
+    public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
 
@@ -44,7 +48,7 @@ public class CommonRes<T> {
         return "CommonRes{" +
                 "data=" + data +
                 ", success=" + success +
-                ", errorCode=" + errorCode +
+                ", errorCode='" + errorCode + '\'' +
                 ", errorMsg='" + errorMsg + '\'' +
                 '}';
     }

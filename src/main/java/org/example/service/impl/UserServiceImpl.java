@@ -1,8 +1,10 @@
 package org.example.service.impl;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.example.exception.DemoBusinessException;
+import org.example.common.enums.ExceptionEnum;
+import org.example.exception.BusinessException;
 import org.example.model.User;
+import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
 import org.example.service.UserService;
@@ -23,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
             //todo send email
         } catch (Exception e) {
-            throw new DemoBusinessException(e);
+            throw new BusinessException(ExceptionEnum.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -35,10 +37,8 @@ public class UserServiceImpl implements UserService {
             User user = new User();
             //todo password encrypt
             BeanUtils.copyProperties(user, request);
-
-            //todo send email
         } catch (Exception e) {
-            throw new DemoBusinessException(e);
+            throw new BusinessException(ExceptionEnum.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> userList() {
+    public List<User> userList(UserQueryRequest request) {
         System.out.println("userList");
         return null;
     }
