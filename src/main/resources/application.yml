@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+
+  ### email begin
+  mail:
+    host: smtp.gmail.com
+    username: xxx@gmail.com
+    password: xxxxxx
+    protocol: smtp
+    default-encoding: utf-8
+    from: xxx@gmail.com
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.display.sendmail: xxx@gmail.com
+    properties.mail.display.sendname: xxx@gmail.com
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+  ### email end

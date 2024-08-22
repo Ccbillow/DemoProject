@@ -41,7 +41,6 @@ public class GlobalExceptionHandler {
         return response;
     }
 
-
     /**
      * handle business exception
      * @param req

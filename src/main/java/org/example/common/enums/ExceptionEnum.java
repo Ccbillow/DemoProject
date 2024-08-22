@@ -10,6 +10,7 @@ public enum ExceptionEnum implements BaseErrorInfoInterface {
     SUCCESS("2000", "success!"),
     PARAM_ILLEGAL("4001","param illegal!"),
     NOT_FOUND("4004", "not found resources!"),
+    EMAIL_SEND_FAIL("4006", "email send fail!"),
     INTERNAL_SERVER_ERROR("5000", "internal server error!"),
     SERVER_BUSY("5003","server busy, please try later!");
 

@@ -19,13 +19,13 @@ public class UserUpdateRequest {
     /**
      * password
      */
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&*()-=_+;':\\\",./<>?])(?=\\\\S+$).{6,}$", message = "The password must contain uppercase, lowercase, numbers and special characters and be at least 6 characters long")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&*()-=_+;':\",./<>?])(?=\\S+$).{6,}$", message = "The password must contain uppercase, lowercase, numbers and special characters and be at least 6 characters long")
     private String password;
 
     /**
      * email
      */
-    @Email(regexp = "^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\\\\.[a-zA-Z0-9-]+)*\\\\.[a-zA-Z0-9]{2,6}$", message = "Email format error")
+    @Email(regexp = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Email format error")
     private String email;
 
     public String getUsername() {

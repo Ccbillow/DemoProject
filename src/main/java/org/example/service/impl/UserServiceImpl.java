@@ -7,13 +7,19 @@ import org.example.model.User;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
+import org.example.service.EmailService;
 import org.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public void add(UserRegisterRequest request) {
         System.out.println("add");
@@ -24,6 +30,9 @@ public class UserServiceImpl implements UserService {
             BeanUtils.copyProperties(user, request);
 
             //todo send email
+            emailService.sendEmail(user.getEmail(), "DemoProject-Test-Email", String.format("hey %s, congratulation! you register success!", user.getUsername()));
+        } catch (BusinessException be) {
+            throw be;
         } catch (Exception e) {
             throw new BusinessException(ExceptionEnum.INTERNAL_SERVER_ERROR);
         }
