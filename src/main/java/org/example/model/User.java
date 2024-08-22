@@ -28,6 +28,11 @@ public class User {
      */
     private String email;
 
+    /**
+     * deleted normal-0, deleted-1
+     */
+    private int deleted;
+
     public Long getUserId() {
         return userId;
     }
@@ -58,5 +63,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
     }
 }

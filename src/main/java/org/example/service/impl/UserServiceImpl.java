@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
             User user = new User();
             //todo password encrypt
             BeanUtils.copyProperties(user, request);
+            user.setDeleted(0);
 
             //todo send email
             emailService.sendEmail(user.getEmail(), "DemoProject-Test-Email", String.format("hey %s, congratulation! you register success!", user.getUsername()));
