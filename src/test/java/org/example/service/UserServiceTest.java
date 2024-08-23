@@ -7,6 +7,7 @@ import org.example.model.domain.User;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
+import org.example.model.view.UserView;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -119,7 +120,7 @@ public class UserServiceTest {
     public void testQueryByUserId_Success_Illegal_UserId() {
         Long userId = -1L;
         Mockito.doReturn(null).when(userMapper).selectByUserId(userId);
-        User user = userService.queryByUserId(userId);
+        UserView user = userService.queryByUserId(userId);
         Assert.assertNull(user);
     }
 
@@ -133,7 +134,7 @@ public class UserServiceTest {
         user.setEmail("test111@gmail.com");
         user.setDeleted(0);
         Mockito.doReturn(user).when(userMapper).selectByUserId(any());
-        User result = userService.queryByUserId(userId);
+        UserView result = userService.queryByUserId(userId);
         Assert.assertNotNull(result);
         Assert.assertEquals(userId, result.getUserId());
     }
@@ -155,7 +156,7 @@ public class UserServiceTest {
     public void testUserList_Success() {
         UserQueryRequest request = new UserQueryRequest();
         Mockito.doReturn(getUserList()).when(userMapper).selectList(any());
-        List<User> result = userService.userList(request);
+        List<UserView> result = userService.userList(request);
         Assert.assertNotNull(result);
     }
 
@@ -164,7 +165,7 @@ public class UserServiceTest {
         UserQueryRequest request = new UserQueryRequest();
         request.setUsername("M");
         Mockito.doReturn(getUserList()).when(userMapper).selectList(any());
-        List<User> userList = userService.userList(request);
+        List<UserView> userList = userService.userList(request);
         Assert.assertNotNull(userList);
         Assert.assertEquals("Mick", userList.get(0).getUsername());
     }
@@ -174,7 +175,7 @@ public class UserServiceTest {
         UserQueryRequest request = new UserQueryRequest();
         request.setUserIdList(Arrays.asList(1L, 2L));
         Mockito.doReturn(getUserList()).when(userMapper).selectList(any());
-        List<User> userList = userService.userList(request);
+        List<UserView> userList = userService.userList(request);
         Assert.assertNotNull(userList);
         Assert.assertEquals(2, userList.size());
     }
@@ -184,7 +185,7 @@ public class UserServiceTest {
         UserQueryRequest request = new UserQueryRequest();
         request.setUserIdList(Collections.singletonList(-1L));
         Mockito.doReturn(new ArrayList<>()).when(userMapper).selectList(any());
-        List<User> userList = userService.userList(request);
+        List<UserView> userList = userService.userList(request);
         Assert.assertEquals(0, userList.size());
     }
 
