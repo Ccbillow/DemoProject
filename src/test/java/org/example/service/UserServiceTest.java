@@ -82,13 +82,12 @@ public class UserServiceTest {
         BusinessException be = null;
 
         UserUpdateRequest request = new UserUpdateRequest();
-        request.setUserId(0L);
         request.setUsername("Test" + System.currentTimeMillis());
         request.setEmail("test@gmail.com");
         request.setPassword("Abc@123");
         try {
             Mockito.doReturn(null).when(userMapper).selectByUserId(any());
-            userService.update(request);
+            userService.update(0L, request);
         } catch (Exception e) {
             be = (BusinessException) e;
         }
@@ -100,7 +99,6 @@ public class UserServiceTest {
     @Test
     public void testUpdate_Success() {
         UserUpdateRequest request = new UserUpdateRequest();
-        request.setUserId(6L);
         request.setUsername("Mick");
         request.setEmail("mick@gmail.com");
         request.setPassword("Mick@123456");
@@ -113,7 +111,7 @@ public class UserServiceTest {
         user.setDeleted(0);
         Mockito.doReturn(user).when(userMapper).selectByUserId(any());
         Mockito.doReturn(1).when(userMapper).updateById(any());
-        userService.update(request);
+        userService.update(1L, request);
     }
 
     @Test

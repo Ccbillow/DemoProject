@@ -11,7 +11,7 @@ public interface UserService {
 
     void add(UserRegisterRequest request);
 
-    void update(UserUpdateRequest request);
+    void update(Long userId, UserUpdateRequest request);
 
     UserView queryByUserId(Long userId);
 

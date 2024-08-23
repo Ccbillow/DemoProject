@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -38,6 +39,21 @@ public class GlobalExceptionHandler {
         response.setSuccess(false);
         response.setErrorCode(ExceptionEnum.PARAM_ILLEGAL.getErrorCode());
         response.setErrorMsg(errorMessage);
+        return response;
+    }
+
+    /**
+     * handle pathvariable param exception
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseBody
+    public CommonResponse bindExceptionHandler(MethodArgumentTypeMismatchException e) {
+        CommonResponse response = new CommonResponse();
+        response.setSuccess(false);
+        response.setErrorCode(ExceptionEnum.PARAM_ILLEGAL.getErrorCode());
+        response.setErrorMsg(String.format("NumberFormatException: param:%s, value:%s, requiredType:%s", e.getName(), e.getValue(), e.getRequiredType()));
         return response;
     }
 

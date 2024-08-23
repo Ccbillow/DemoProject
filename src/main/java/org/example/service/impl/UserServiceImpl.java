@@ -66,11 +66,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(UserUpdateRequest request) {
+    public void update(Long userId, UserUpdateRequest request) {
         try {
-            User user = userMapper.selectByUserId(request.getUserId());
+            User user = userMapper.selectByUserId(userId);
             if (user == null) {
-                log.error(String.format("user update business exception, user not exist, userId:%s", request.getUserId()));
+                log.error(String.format("user update business exception, user not exist, userId:%s", userId));
                 throw new BusinessException(ExceptionEnum.USER_NOT_EXIST);
             }
 

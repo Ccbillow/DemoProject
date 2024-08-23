@@ -18,9 +18,6 @@ public class UserConvertUtil {
         result.setUsername(user.getUsername());
         result.setPassword(user.getPassword());
         result.setEmail(user.getEmail());
-        result.setDeleted(user.getDeleted());
-        result.setCreateTime(user.getCreateTime());
-        result.setUpdateTime(user.getUpdateTime());
         return result;
     }
 
