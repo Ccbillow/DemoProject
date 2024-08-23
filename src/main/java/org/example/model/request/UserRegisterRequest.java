@@ -2,7 +2,6 @@ package org.example.model.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class UserRegisterRequest {
@@ -10,7 +9,7 @@ public class UserRegisterRequest {
     /**
      * username
      */
-    @NotBlank
+    @NotBlank(message = "username can not be null")
     private String username;
 
     /**

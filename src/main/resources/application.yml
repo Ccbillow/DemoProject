@@ -19,3 +19,17 @@ spring:
     properties.mail.smtp.starttls.required: true
     properties.mail.smtp.ssl.enable: false
   ### email end
+
+  ### DB begin
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo_project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+    username: root
+    password: 12345678
+  ### DB end
+
+
+# MyBatis Plus
+mybatis-plus:
+  mapper-locations:
+    - "classpath*:mappers/**/*.xml"

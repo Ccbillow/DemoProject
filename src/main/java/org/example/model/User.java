@@ -1,36 +1,41 @@
 package org.example.model;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
+@TableName("t_user")
 public class User {
 
     /**
      * userId
      */
-    @NotNull
+    @TableId(type = IdType.AUTO)
     private Long userId;
+
     /**
      * username
      */
-    @NotBlank
+    @TableField
     private String username;
 
     /**
      * password
      */
+    @TableField
     private String password;
 
     /**
      * email
      */
+    @TableField
     private String email;
 
     /**
      * deleted normal-0, deleted-1
      */
+    @TableField
     private int deleted;
 
     public Long getUserId() {
