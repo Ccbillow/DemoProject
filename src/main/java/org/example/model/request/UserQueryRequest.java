@@ -14,6 +14,7 @@ public class UserQueryRequest {
 
     /**
      * username
+     * fuzzy match
      */
     private String username;
 

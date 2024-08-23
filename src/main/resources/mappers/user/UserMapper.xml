@@ -4,5 +4,24 @@
 
 <mapper namespace="org.example.mapper.UserMapper">
 
+    <select id="selectByUserId" resultType="org.example.model.User">
+        SELECT
+            user_id, username, password, email, deleted, create_time, update_time
+        FROM
+            t_user
+        WHERE
+            1 = 1
+        AND user_id = #{userId}
+        AND deleted = 0
+    </select>
 
+    <update id="batchDelete" parameterType="java.util.List">
+        UPDATE t_user
+        set deleted = 1
+        where user_id in
+        <foreach collection="list" index="index" item="userId"
+                 separator="," open="(" close=")">
+            #{userId,jdbcType=BIGINT}
+        </foreach>
+    </update>
 </mapper>

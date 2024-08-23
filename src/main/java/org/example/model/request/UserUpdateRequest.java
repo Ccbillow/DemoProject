@@ -7,13 +7,13 @@ import javax.validation.constraints.Pattern;
 
 public class UserUpdateRequest {
 
-    @NotNull
+    @NotNull(message = "userId can not be null")
     private Long userId;
 
     /**
      * username
      */
-    @NotBlank
+    @NotBlank(message = "username can not be null")
     private String username;
 
     /**
@@ -27,6 +27,14 @@ public class UserUpdateRequest {
      */
     @Email(regexp = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Email format error")
     private String email;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getUsername() {
         return username;

@@ -12,6 +12,7 @@ public enum ExceptionEnum implements BaseErrorInfoInterface {
     NOT_FOUND("4004", "not found resources!"),
     EMAIL_SEND_FAIL("4006", "email send fail!"),
     USER_REGISTER_FAIL("4007", "user register fail!"),
+    USER_NOT_EXIST("4008", "user not exist!"),
     INTERNAL_SERVER_ERROR("5000", "internal server error!"),
     SERVER_BUSY("5003","server busy, please try later!");
 

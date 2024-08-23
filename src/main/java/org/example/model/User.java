@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.util.Date;
+
 @TableName("t_user")
 public class User {
 
@@ -37,6 +39,12 @@ public class User {
      */
     @TableField
     private int deleted;
+
+    @TableField
+    private Date createTime;
+
+    @TableField
+    private Date updateTime;
 
     public Long getUserId() {
         return userId;
@@ -76,5 +84,21 @@ public class User {
 
     public void setDeleted(int deleted) {
         this.deleted = deleted;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
