@@ -4,7 +4,7 @@
 
 <mapper namespace="org.example.mapper.UserMapper">
 
-    <select id="selectByUserId" resultType="org.example.model.User">
+    <select id="selectByUserId" resultType="org.example.model.domain.User">
         SELECT
             user_id, username, password, email, deleted, create_time, update_time
         FROM

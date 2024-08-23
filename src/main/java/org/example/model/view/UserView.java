@@ -1,49 +1,39 @@
-package org.example.model;
+package org.example.model.view;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
-@TableName("t_user")
-public class User {
+/**
+ * user view
+ * obj to front
+ */
+public class UserView {
 
-    /**
-     * userId
-     */
-    @TableId(type = IdType.AUTO)
     private Long userId;
 
     /**
      * username
      */
-    @TableField
     private String username;
 
     /**
      * password
      */
-    @TableField
     private String password;
 
     /**
      * email
      */
-    @TableField
     private String email;
 
     /**
      * deleted normal-0, deleted-1
      */
-    @TableField
     private int deleted;
 
-    @TableField
     private Date createTime;
 
-    @TableField
     private Date updateTime;
 
     public Long getUserId() {

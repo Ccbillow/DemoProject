@@ -1,6 +1,8 @@
 package org.example.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.common.enums.ExceptionEnum;
 import org.example.exception.BusinessException;
 import org.example.service.EmailService;
@@ -15,6 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailServiceImpl implements EmailService {
 
+    Logger log = LogManager.getLogger(EmailServiceImpl.class);
+
     @Value("${spring.mail.from}")
     private String from;
 
@@ -23,10 +27,12 @@ public class EmailServiceImpl implements EmailService {
 
     public void sendEmail(String to, String subject, String text) {
         if (StringUtils.isBlank(to) || StringUtils.isBlank(subject) || StringUtils.isBlank(text)) {
+            log.error("send email business exception, param should not be null, to:%s, subject:%s, text:%s", to, subject, text);
             throw new BusinessException(ExceptionEnum.PARAM_ILLEGAL);
         }
 
         if (!EmailCheckUtil.isValidEmail(to)) {
+            log.error("send email business exception, email is invalid. to:%s", to);
             throw new BusinessException(ExceptionEnum.PARAM_ILLEGAL.getErrorCode(), "email is illegal");
         }
 
@@ -39,7 +45,7 @@ public class EmailServiceImpl implements EmailService {
         try {
             javaMailSender.send(message);
         } catch (MailException e) {
-            e.printStackTrace();
+            log.error("send email exception, error msg:%s", e.getMessage());
             throw new BusinessException(ExceptionEnum.EMAIL_SEND_FAIL);
         }
     }

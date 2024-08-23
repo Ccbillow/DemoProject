@@ -1,7 +1,7 @@
 package org.example.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.example.model.User;
+import org.example.model.domain.User;
 
 import java.util.List;
 

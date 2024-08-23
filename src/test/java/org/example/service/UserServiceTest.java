@@ -3,7 +3,7 @@ package org.example.service;
 import org.example.common.enums.ExceptionEnum;
 import org.example.exception.BusinessException;
 import org.example.mapper.UserMapper;
-import org.example.model.User;
+import org.example.model.domain.User;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;

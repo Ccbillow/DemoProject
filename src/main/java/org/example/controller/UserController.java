@@ -1,11 +1,12 @@
 package org.example.controller;
 
 
-import org.example.model.User;
+import org.example.model.domain.User;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
 import org.example.model.response.CommonResponse;
+import org.example.model.view.UserView;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -52,9 +53,9 @@ public class UserController {
 
     @RequestMapping(value = "/queryById", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResponse<User> queryById(@RequestParam @NotNull(message = "userId cannot be null") Long userId) {
-        CommonResponse<User> result = new CommonResponse<>();
-        User user = userService.queryByUserId(userId);
+    public CommonResponse<UserView> queryById(@RequestParam @NotNull(message = "userId cannot be null") Long userId) {
+        CommonResponse<UserView> result = new CommonResponse<>();
+        UserView user = userService.queryByUserId(userId);
         result.setSuccess(true);
         result.setData(user);
         return result;
@@ -62,9 +63,9 @@ public class UserController {
 
     @RequestMapping(value = "/query", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResponse<List<User>> query(UserQueryRequest request) {
-        CommonResponse<List<User>> result = new CommonResponse<>();
-        List<User> userList = userService.userList(request);
+    public CommonResponse<List<UserView>> query(UserQueryRequest request) {
+        CommonResponse<List<UserView>> result = new CommonResponse<>();
+        List<UserView> userList = userService.userList(request);
         result.setSuccess(true);
         result.setData(userList);
         return result;
