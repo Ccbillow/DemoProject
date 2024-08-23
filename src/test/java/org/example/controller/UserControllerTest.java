@@ -147,25 +147,6 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testUpdate_Fail_Username_Null() throws Exception{
-        String username = "Test" + System.currentTimeMillis();
-
-        Mockito.doNothing().when(userService).update(any(), any());
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\n" +
-                                "\t\"password\": \"Abc@123\",\n" +
-                                "\t\"email\": \"Test@gmail.com\"\n" +
-                                "}"))
-                .andExpect(status().isOk())
-                .andReturn();
-        BusinessException e = JSON.parseObject(result.getResponse().getContentAsString(), BusinessException.class);
-        Assert.assertEquals(e.getErrorCode(), ExceptionEnum.PARAM_ILLEGAL.getErrorCode());
-        Assert.assertEquals(e.getErrorMsg(), "username can not be null");
-    }
-
-    @Test
     public void testUpdate_Fail_Password_Illegal() throws Exception{
         String username = "Test" + System.currentTimeMillis();
 

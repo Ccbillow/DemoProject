@@ -1,21 +1,23 @@
 package org.example.model.request;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 
+@ApiModel(value = "user query request", description = "user query request param")
 public class UserQueryRequest {
 
     /**
      * user id list
      */
+    @ApiModelProperty(value = "userIdList", example = "[1, 2, 3]")
     private List<Long> userIdList;
 
     /**
      * username
      * fuzzy match
      */
+    @ApiModelProperty(value = "username", example = "Ma")
     private String username;
 
     public List<Long> getUserIdList() {

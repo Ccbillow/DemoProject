@@ -1,26 +1,31 @@
 package org.example.model.request;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+@ApiModel(value = "user update request", description = "user update request param")
 public class UserUpdateRequest {
 
     /**
      * username
      */
-    @NotBlank(message = "username can not be null")
+    @ApiModelProperty(value = "username", example = "Mary")
     private String username;
 
     /**
      * password
      */
+    @ApiModelProperty(value = "password", example = "Abc@123")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[`~!@#$%^&*()-=_+;':\",./<>?])(?=\\S+$).{6,}$", message = "The password must contain uppercase, lowercase, numbers and special characters and be at least 6 characters long")
     private String password;
 
     /**
      * email
      */
+    @ApiModelProperty(value = "email", example = "mary@gmail.com")
     @Email(regexp = "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Email format error")
     private String email;
 

@@ -1,6 +1,8 @@
 package org.example.controller;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
@@ -16,11 +18,13 @@ import java.util.List;
 /**
  * user controller
  */
+@Api(tags = "user controller")
 @RestController
 public class UserController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value = "user register")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public CommonResponse<Void> register(@RequestBody @Valid UserRegisterRequest request) {
@@ -30,6 +34,7 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "user update")
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public CommonResponse<Void> update(@PathVariable("id") Long userId, @RequestBody @Valid UserUpdateRequest request) {
@@ -39,6 +44,7 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "user delete", notes = "logic delete")
     @RequestMapping(value = "/users/{idList}", method = RequestMethod.DELETE)
     @ResponseBody
     public CommonResponse<Void> delete(@PathVariable("idList") List<Long> userIdList) {
@@ -48,6 +54,7 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "query one user", notes = "using userId to query one user")
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResponse<UserView> queryById(@PathVariable("id") Long userId) {
@@ -58,6 +65,7 @@ public class UserController {
         return result;
     }
 
+    @ApiOperation(value = "query user list")
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public CommonResponse<List<UserView>> query(@RequestBody UserQueryRequest request) {

@@ -75,9 +75,15 @@ public class UserServiceImpl implements UserService {
             }
 
             //todo password encrypt
-            user.setPassword(request.getPassword());
-            user.setEmail(request.getEmail());
-            user.setUsername(request.getUsername());
+            if (StringUtils.isNotBlank(request.getPassword())) {
+                user.setPassword(request.getPassword());
+            }
+            if (StringUtils.isNotBlank(request.getEmail())) {
+                user.setEmail(request.getEmail());
+            }
+            if (StringUtils.isNotBlank(request.getUsername())) {
+                user.setUsername(request.getUsername());
+            }
             user.setUpdateTime(new Date());
             userMapper.updateById(user);
         } catch (BusinessException be) {

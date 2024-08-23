@@ -8,12 +8,12 @@
 
         <RollingFile name="RollingFile"
                      fileName="./logs/spring-boot-logger-log4j2.log"
-                     filePattern="./logs/${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+                     filePattern="./logs/${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MM-yyyy}-%i.log.gz">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
             <Policies>
-                <!-- 滚动存储 -->
+                <!-- rolling save -->
                 <OnStartupTriggeringPolicy />
                 <SizeBasedTriggeringPolicy
                         size="10 MB" />

@@ -1,26 +1,34 @@
 package org.example.model.view;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * user view
  * obj to front
  */
+@ApiModel(value = "user view", description = "user response")
 public class UserView {
 
+    @ApiModelProperty(value = "userId", example = "1")
     private Long userId;
 
     /**
      * username
      */
+    @ApiModelProperty(value = "username", example = "Mary")
     private String username;
 
     /**
      * password
      */
+    @ApiModelProperty(value = "password", example = "Abc@123")
     private String password;
 
     /**
      * email
      */
+    @ApiModelProperty(value = "email", example = "Mary@gmail.com")
     private String email;
 
     public Long getUserId() {
