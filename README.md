@@ -11,8 +11,8 @@ This Spring Boot project provides a backend API for user management, including r
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/backend-api.git
-   cd backend-api
+   git clone git clone git@github.com:Ccbillow/DemoProject.git
+   cd DemoProject
    ```
 
 2. **Make sure you have java and docker environment**:
