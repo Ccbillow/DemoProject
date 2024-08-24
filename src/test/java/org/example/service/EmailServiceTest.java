@@ -16,6 +16,9 @@ import javax.mail.internet.MimeMessage;
 
 import static org.mockito.ArgumentMatchers.any;
 
+/**
+ * Email Service Test
+ */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class EmailServiceTest {

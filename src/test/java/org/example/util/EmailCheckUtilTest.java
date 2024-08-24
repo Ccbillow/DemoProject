@@ -3,6 +3,9 @@ package org.example.util;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Email Check Util
+ */
 public class EmailCheckUtilTest {
 
     @Test

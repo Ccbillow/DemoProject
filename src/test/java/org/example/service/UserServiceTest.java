@@ -24,6 +24,9 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 
+/**
+ * User Service Test
+ */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
