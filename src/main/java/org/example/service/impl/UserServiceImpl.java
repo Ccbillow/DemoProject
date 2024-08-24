@@ -6,16 +6,17 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.common.BaseConstant;
 import org.example.common.enums.ExceptionEnum;
+import org.example.common.enums.NoticeTypeEnum;
 import org.example.exception.BusinessException;
+import org.example.handler.NoticeHandlerFactory;
 import org.example.mapper.UserMapper;
 import org.example.model.domain.User;
+import org.example.model.request.NoticeRequest;
 import org.example.model.request.UserQueryRequest;
 import org.example.model.request.UserRegisterRequest;
 import org.example.model.request.UserUpdateRequest;
 import org.example.model.view.UserView;
-import org.example.service.EmailService;
 import org.example.service.UserService;
 import org.example.util.convert.UserConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
     Logger log = LogManager.getLogger(UserServiceImpl.class);
 
     @Autowired
-    private EmailService emailService;
+    private NoticeHandlerFactory noticeHandlerFactory;
 
     @Autowired
     private UserMapper userMapper;
@@ -54,8 +55,8 @@ public class UserServiceImpl implements UserService {
             }
 
             userMapper.insert(user);
-            // send email
-            emailService.sendEmail(user.getEmail(), BaseConstant.EMAIL_SUBJECT, String.format(BaseConstant.EMAIL_CONTENT, user.getUsername()));
+
+            notice(request);
         } catch (BusinessException be) {
             log.error(String.format("user add business exception, code:%s, msg:%s", be.getErrorCode(), be.getErrorMsg()));
             throw be;
@@ -63,6 +64,19 @@ public class UserServiceImpl implements UserService {
             log.error(String.format("user add exception, error msg:%s", e.getMessage()));
             throw new BusinessException(ExceptionEnum.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    /**
+     * notice user
+     * default email
+     * @param request
+     */
+    private void notice(UserRegisterRequest request) {
+        NoticeRequest noticeRequest = new NoticeRequest();
+        noticeRequest.setEmail(request.getEmail());
+        noticeRequest.setUsername(request.getUsername());
+        //todo NoticeType : consider using configuration center to dynamic config or param from frontend
+        noticeHandlerFactory.getHandler(NoticeTypeEnum.EMAIL).handleNotice(noticeRequest);
     }
 
     @Override

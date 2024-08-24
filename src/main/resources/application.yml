@@ -23,7 +23,7 @@ spring:
   ### DB begin
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/demo_project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+    url: jdbc:mysql://124.220.66.189:3306/demo_project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false&allowMultiQueries=true
     username: root
     password: 12345678
   ### DB end
