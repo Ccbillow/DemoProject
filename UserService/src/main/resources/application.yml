@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-service
+
+  ### DB begin
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://124.220.66.189:3306/demo_project?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 12345678
+  ### DB end
+
+
+# MyBatis Plus
+mybatis-plus:
+  mapper-locations:
+    - "classpath*:mappers/**/*.xml"

@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: email-service
+
+  ### email begin
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    username: 21b18d1b25698c
+    password: e06734b22b42f1
+    protocol: smtp
+    default-encoding: utf-8
+    from: simon@mailtrap.com
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 2525
+    properties.mail.display.sendmail: simon@mailtrap.com
+    properties.mail.display.sendname: simon@mailtrap.com
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: false
+  ### email end
