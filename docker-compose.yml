@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+  demoprojecteureka:
+    image: demoprojecteureka
+    container_name: demoprojecteureka
+    ports:
+      - 8761:8761
+
+  emailservice:
+    image: emailservice
+    container_name: emailservice
+    ports:
+      - 8082:8082
+    links:
+      - demoprojecteureka
+    depends_on:
+      - demoprojecteureka
+
+  userservice:
+    image: userservice
+    container_name: userservice
+    ports:
+      - 8081:8081
+    links:
+      - demoprojecteureka
+    depends_on:
+      - demoprojecteureka

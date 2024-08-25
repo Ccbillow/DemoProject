@@ -13,6 +13,13 @@ spring:
     password: 12345678
   ### DB end
 
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      defaultZone: http://root:root@demoprojecteureka:8761/eureka/
 
 # MyBatis Plus
 mybatis-plus:

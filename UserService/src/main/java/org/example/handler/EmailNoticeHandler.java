@@ -37,7 +37,7 @@ public class EmailNoticeHandler implements NoticeHandler{
         sendRequest.setSubject(BaseConstant.EMAIL_SUBJECT);
         sendRequest.setText(String.format(BaseConstant.EMAIL_CONTENT, request.getUsername()));
         CommonResponse result = getRestTemplate().postForObject(
-                "http://localhost:8082/email/send", sendRequest, CommonResponse.class);
+                "http://emailservice:8082/email/send", sendRequest, CommonResponse.class);
         log.info("notice user by email, response:{}", JSON.toJSONString(result));
     }
 }

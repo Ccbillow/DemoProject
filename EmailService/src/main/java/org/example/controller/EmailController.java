@@ -1,8 +1,11 @@
 package org.example.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.model.request.EmailSendRequest;
 import org.example.model.response.CommonResponse;
 import org.example.service.EmailService;
@@ -15,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "email controller")
 @RestController
 public class EmailController {
+
+    Logger log = LogManager.getLogger(EmailController.class);
+
     @Autowired
     private EmailService emailService;
 
@@ -23,8 +29,11 @@ public class EmailController {
     @ResponseBody
     public CommonResponse<Void> query(@RequestBody EmailSendRequest request) {
         CommonResponse<Void> result = new CommonResponse<>();
+
+        log.info("email send controller, param:{}", JSON.toJSONString(request));
         emailService.sendEmail(request.getTo(), request.getSubject(), request.getText());
         result.setSuccess(true);
+        log.info("email send controller, result:{}", JSON.toJSONString(result));
         return result;
     }
 
