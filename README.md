@@ -13,7 +13,7 @@ Make sure you have java, docker and docker-compose environment
 
 1. **Clone the repository**:
    ```bash
-   git clone git clone git@github.com:Ccbillow/DemoProject.git
+   git clone git@github.com:Ccbillow/DemoProject.git
    cd DemoProject
    ```
 
